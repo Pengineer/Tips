@@ -13,3 +13,18 @@
          screen -S xingyu       后台创建新的会话，会话名为xingyu（会话只用创建一次即可，如果要进入已有会话，直接执行第3步）
          script /dev/null       切换管道
          screen -x xingyu       进入会话xingyu
+#### 6，开发中应该合理的使用enumeration。
+~~~java
+public enum DataIsShow {
+    SHOW(1),NOT_SHOW(0);
+
+    private Integer value;
+    private DataIsShow(Integer tmpValue) {
+        value = tmpValue;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+}
+~~~
