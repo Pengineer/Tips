@@ -8,3 +8,8 @@
         （1）当前为master分支：git checkout -b master_test  origin/master_dev   在本地创建与远程master_dev相同的分支（not master）
         （2）当前为master分支：git checkout -b master_test  在本地创建与远程master（当前分支）相同的分支，（常见操作）
         （3）当前为master分支：git checkout master_dev  切换当前分支从master到master_dev
+#### 5，Linux 会话管理神器：screen  （tmux更先进一点）
+         screen -ls             显示所有会话
+         screen -S xingyu       创建新的会话，会话名为xingyu
+         script /dev/null       切换管道
+         screen -x xingyu       进入会话xingyu
