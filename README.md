@@ -53,3 +53,4 @@ public enum DataIsShow {
       F7 : 进入
       F8 : 单步
       F9 : 调到下一个断点
+####8，chrome插件：JSONview
