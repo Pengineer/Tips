@@ -28,3 +28,28 @@ public enum DataIsShow {
     }
 }
 ~~~
+#### 7，IDEA长撸快捷键
+      ctrl + enter : 导入包
+      ctrl + insert : 插入getter/setter 或者构造函数
+   
+      ctrl + alter + o : 自动优化导入的包
+      ctrl + alter + t : 自动生成try-catch
+      ctrl + alter + l : 自动格式化代码
+      ctrl + alter + left/right : 返回上一次浏览的地方
+      ctrl + alter + up/down : 代码块上/下移一个代码块
+      shift + alter + up/down : 当前行上/下移一行
+      ctrl + shift + f : 全局查找
+   
+      ctrl + i : 实现接口方法
+      ctrl + o : 覆写父类方法
+      ctrl + u : (从方法体外)跳转到父类
+   
+      ctrl + d : 复制一行
+      ctrl + x : 剪切一行（可当删除使用ctrl + y）
+   
+      alter + left/right : 切换视图
+     
+      调试：
+      F7 : 进入
+      F8 : 单步
+      F9 : 调到下一个断点
