@@ -54,3 +54,7 @@ public enum DataIsShow {
       F8 : 单步
       F9 : 调到下一个断点
 ####8，chrome插件：JSONview
+
+####9，基于IDEA的热部署</br>
+　　在DEBUG项目的时候，如果不能进行热部署，那将是很痛苦的一件事，IDEA2016是支持服务器热部署选项的：RUN/DEBUG Configuration -> Server -> On frame deactivation，选择Update classes and resource。也就是说在IDEA失去焦点的时候，会重新加载被改变的class文件。
+        
