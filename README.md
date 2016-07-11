@@ -58,4 +58,4 @@ public enum DataIsShow {
 ####9，基于IDEA的热部署</br>
 　　在DEBUG项目的时候，如果不能进行热部署，那将是很痛苦的一件事，IDEA2016是支持服务器热部署选项的：RUN/DEBUG Configuration -> Server -> On frame deactivation，选择Update classes and resource。也就是说在IDEA失去焦点的时候，会重新加载被改变的class文件。</br>
 　　如果是非DUBUG的普通开发模式，建议就不要打开该选项了，不然每次切换窗口，IDEA就会检查有没有class文件被修改。（打开也没问题~）
-        
+####10，远程代码调试（http://blog.csdn.net/cyl937/article/details/44134955）
