@@ -29,8 +29,8 @@ public enum DataIsShow {
 }
 ~~~
 #### 7，IDEA常撸快捷键
-      ctrl + enter : 导入包
-      ctrl + insert : 插入getter/setter 或者构造函数
+      alter + enter : 导入包
+      alter + insert : 插入getter/setter 或者构造函数
    
       ctrl + alter + o : 自动优化导入的包
       ctrl + alter + t : 自动生成try-catch
