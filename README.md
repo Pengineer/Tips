@@ -59,3 +59,10 @@ public enum DataIsShow {
 　　在DEBUG项目的时候，如果不能进行热部署，那将是很痛苦的一件事，IDEA2016是支持服务器热部署选项的：RUN/DEBUG Configuration -> Server -> On frame deactivation，选择Update classes and resource。也就是说在IDEA失去焦点的时候，会重新加载被改变的class文件。</br>
 　　如果是非DUBUG的普通开发模式，建议就不要打开该选项了，不然每次切换窗口，IDEA就会检查有没有class文件被修改。（打开也没问题~）
 ####10，远程代码调试（http://blog.csdn.net/cyl937/article/details/44134955）
+####11，网站开发工具curl（http://www.ruanyifeng.com/blog/2011/09/curl.html）
+        curl www.aliyun.com  获取网页源码
+        curl www.aliyun.com -o filename 获取网页源码，同时保存到指定文件（等同于wget）
+        curl www.aliyun.com -i  获取网页源码，同时加上响应头
+        curl www.aliyun.com -v  显示一次http通信的整个过程，包括端口连接、http request头信息、响应头和响应正文等信息。
+        curl --form upload=@localfilename --form press=OK [URL]  文件上传
+	        假定文件上传的HTML为<form method="POST" enctype='multipart/form-data' action="upload.cgi"><input type=file name=upload><input type=submit name=press value="OK"></form>
