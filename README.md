@@ -66,3 +66,34 @@ public enum DataIsShow {
         curl www.aliyun.com -v  显示一次http通信的整个过程，包括端口连接、http request头信息、响应头和响应正文等信息。
         curl --form upload=@localfilename --form press=OK [URL]  文件上传
 	        假定文件上传的HTML为<form method="POST" enctype='multipart/form-data' action="upload.cgi"><input type=file name=upload><input type=submit name=press value="OK"></form>
+####12，Tomcat对Session的管理
+　　（1）浏览器第一次请求访问应用中任意一个支持会话的网页时，Servlet容器会试图寻找HTTP请求中表示Session ID的Cookie，由于还不存在这样的Cookie，因此Servlet认为一个新的会话开始了，于是创建一个HttpSession对象，为它分配唯一的Session ID，然后把Session ID作为Cookie添加到HTTP响应结果中。当浏览器接受到HTTP响应结果后，会把其中表示Session ID的Cookie保存在客户端。</br>
+　　（2）当浏览器再次访问该应用时，本次HTTP请求中就会包含有表示Session ID的Cookie。Servlet容器从HTTP请求中获取到该Cookie，认为本次请求已经处于会话中了，就不会再创建新的HttpSession对象，而是从Cookie中获取Session ID，然后根据Session ID找到内存中对应的HttpSession对象。</br>
+　　（3）浏览器重复步骤二，直到当前会话被销毁，HttpSession对象就会结束生命周期。</br>
+　　在默认情况下，JSP网页都是支持会话的，如果一个Web组件支持会话（比如JSP），就意味着：</br>
+　　a.当客户端访问该Web组件时，Servlet容器会自动查找HTTP请求中表示Session ID的Cookie，以及向HTTP响应结果中添加表示Session ID的Cookie。Servlet容器还会创建新的HttpSession对象或则寻找已经存在的与Session ID对应的HttpSession对象。</br>
+　　b.Web组件可以访问代表当前会话的HttpSession对象。
+~~~Java
+如下JSP代码：
+<%
+Cookie[] cookies = request.getCookies();
+if(cookies == null) {
+	out.print("no cookie");
+	return;
+}
+for(int i=0; i < cookies.length; i++) {
+%>
+	<p>
+	<b>Cookie name:</b>
+	<%= cookies[i].getName() %>
+	<b>Cookie value:</b>
+	<%= cookies[i].getValue() %>
+	</p>
+	<p>
+	<b>max age in seconds:</b>
+	<%= cookies[i].getMaxAge() %>
+	</p>
+<%
+}
+%>
+~~~
