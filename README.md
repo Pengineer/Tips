@@ -97,3 +97,4 @@ for(int i=0; i < cookies.length; i++) {
 }
 %>
 ~~~
+####13，Linux工具命令之Dig：Dig主要是用来做域名解析（http://www.ruanyifeng.com/blog/2016/06/dns.html，虽然讲的是DNS，但是主体是Dig）
