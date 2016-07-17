@@ -101,4 +101,4 @@ for(int i=0; i < cookies.length; i++) {
 ####14，HttpClient4.x自带维持会话功能，只要使用同一个HttpClient且未关闭连接，则可以使用相同会话来访问其他要求登录验证的服务。HttpClient对session的保持有两种方式：
 　　a.使用一个全局的HttpClient对象，因为HttpClient自带维持会话功能。</br>
 　　b.获取登录请求返回的Cookie信息，后面的所有请求都带着Cookie信息。
-　　
+####15，为了保证变量名的规范使用，对不会重新赋值的变量尽量加上final。　　
