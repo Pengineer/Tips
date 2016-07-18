@@ -102,3 +102,5 @@ for(int i=0; i < cookies.length; i++) {
 　　a.使用一个全局的HttpClient对象，因为HttpClient自带维持会话功能。</br>
 　　b.获取登录请求返回的Cookie信息，后面的所有请求都带着Cookie信息。
 ####15，为了保证变量名的规范使用，对不会重新赋值的变量尽量加上final。　　
+####16，利用EXCEL拼接SQL语句（CONCATENATE函数），例如：
+　　=CONCATENATE("update question_category set solution_url='", L3, "' and tool_url='", N3,"' where category_name='",A3, "' and product_code='", B3, "';")
