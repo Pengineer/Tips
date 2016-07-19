@@ -104,3 +104,7 @@ for(int i=0; i < cookies.length; i++) {
 ####15，为了保证变量名的规范使用，对不会重新赋值的变量尽量加上final。　　
 ####16，利用EXCEL拼接SQL语句（CONCATENATE函数），例如：
 　　=CONCATENATE("update question_category set solution_url='", L3, "' and tool_url='", N3,"' where category_name='",A3, "' and product_code='", B3, "';")
+####17，关于MySQL中的replace into
+　　a.当存在pk冲突的时候是先delete再insert。
+　　b.当存在uk冲突的时候是直接update
+　　结论：如果业务逻辑强依赖自增ID，绝对不要用replace，普通环境也不建议这样用，因为会导致主键的重新组织。
