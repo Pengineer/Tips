@@ -105,6 +105,7 @@ for(int i=0; i < cookies.length; i++) {
 ####16，利用EXCEL拼接SQL语句（CONCATENATE函数），例如：
 　　=CONCATENATE("update question_category set solution_url='", L3, "' and tool_url='", N3,"' where category_name='",A3, "' and product_code='", B3, "';")
 ####17，关于MySQL中的replace into
-　　a.当存在pk冲突的时候是先delete再insert。
-　　b.当存在uk冲突的时候是直接update
+　　a.当存在pk冲突的时候是先delete再insert。</br>
+　　b.当存在uk冲突的时候是直接update</br>
 　　结论：如果业务逻辑强依赖自增ID，绝对不要用replace，普通环境也不建议这样用，因为会导致主键的重新组织。
+####18，MySQL的字符类型中，char和varchar指定的大小是字符，其它字符类型指定的都是字节；MySQL的text等类型加索引时，需要指定索引的长度，也就是以text所属字段的前X个字符进行索引。
