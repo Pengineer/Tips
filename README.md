@@ -109,3 +109,10 @@ for(int i=0; i < cookies.length; i++) {
 　　b.当存在uk冲突的时候是直接update</br>
 　　结论：如果业务逻辑强依赖自增ID，绝对不要用replace，普通环境也不建议这样用，因为会导致主键的重新组织。
 ####18，MySQL的字符类型中，char和varchar指定的大小是字符，其它字符类型指定的都是字节；MySQL的text等类型加索引时，需要指定索引的长度，也就是以text所属字段的前X个字符进行索引。
+####19，HTTP Server 与 Tomcat
+　　Web应用部署发布时，通常将HTTP Server与Tomcat整合使用，常见的HTTPServer如Apache、nginx等，为什么要让web服务器与Tomcat之间进行连接。事实上Tomcat本身已经提供了HTTP服务，该服务默认的端口是8080，装好tomcat后通过8080端口可以直接使用Tomcat所运行的应用程序，你也可以将该端口改为80。</br>
+　　既然Tomcat本身已经可以提供这样的服务，我们为什么还要引入Apache或者其他的一些专门的HTTP服务器呢？原因有下面几个：</br>
+　　1.提升对静态文件的处理性能。</br>
+　　2.利用 Web 服务器来做负载均衡以及容错。</br>
+　　3.无缝的升级应用程序。</br>
+　　这三点对一个web网站来说是非常之重要的，我们希望我们的网站不仅是速度快，而且要稳定，不能因为某个 Tomcat 宕机或者是升级程序导致用户访问不了。
