@@ -117,5 +117,27 @@ for(int i=0; i < cookies.length; i++) {
 　　3.无缝的升级应用程序。</br>
 　　这三点对一个web网站来说是非常之重要的，我们希望我们的网站不仅是速度快，而且要稳定，不能因为某个 Tomcat 宕机或者是升级程序导致用户访问不了。
 ####20，Excel数据处理函数，只需要针对一行处理得出结果，然后双击该单元格右下角即可得出所有行的处理结果：
-　　1.=CONCATENATE(C3,D3)     拼接单元格 
+　　1.=CONCATENATE(C3,D3)     拼接单元格 </br>
 　　2.=COUNTIF(F3:F500, E3)   E列在F列中的个数
+####21，关于Linux/Unix下的fork()函数：
+　　Unix/Linux操作系统提供了一个fork()系统调用，它非常特殊。普通的函数调用，调用一次，返回一次，但是fork()调用一次，返回两次，
+因为<b>操作系统自动把当前进程（称为父进程）复制了一份（称为子进程），然后，分别在父进程和子进程内返回</b>。
+子进程永远返回0，而父进程返回子进程的ID。这样做的理由是，一个父进程可以fork出很多子进程，所以，父进程要记下每个子进程的ID，而子进程只需要调用getppid()就可以拿到父进程的ID。
+~~~python
+import os
+print 'process %s start...' % os.getpid()
+pid=os.fork()
+if pid==0: # 子进程执行if
+    print 'I am child process (%s) and my parent is %s.' % (os.getpid(), os.getppid())
+    # sub_process()    此处为子进程服务入口
+else:      # 父进程执行else
+    print 'I (%s) just created a child process (%s).' % (os.getpid(), pid)
+    # parent_process() 此处为父进程服务入口
+~~~
+由于Windows没有fork调用，上面的代码在Windows上无法运行。Linux下的运行结果如下：</br>
+>process 30940 start...</br>
+>I (25340) just created a child process (25341).</br>
+>I am child process (25341) and my parent is 25340.</br>
+>[xingyu.pl@e010101082156 ~]$ ps -ef |grep 25340</br>
+>130707   25340  8138  0 10:14 pts/0    00:00:00 python test.py</br>
+>130707   25341 25340  0 10:14 pts/0    00:00:00 python test.py</br>
