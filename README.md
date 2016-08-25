@@ -141,3 +141,34 @@ else:      # 父进程执行else
 >[xingyu.pl@e010101082156 ~]$ ps -ef |grep 25340</br>
 >130707   25340  8138  0 10:14 pts/0    00:00:00 python test.py</br>
 >130707   25341 25340  0 10:14 pts/0    00:00:00 python test.py</br>
+####22，异常链：e.getCause()
+~~~Java
+public Object invoke(Object proxy, Method method, Object[] args) {
+        Object result = null;
+        ((BaseTest) this.tarjectObject).getJdbcTemplate().beginTranstaion();
+        logger.info("----------------------------------------------------------------------------");
+        logger.info(this.tarjectObject.getClass().getName() + "." + method.getName() + ": started");
+        try {
+            result = method.invoke(this.tarjectObject, args);
+        } catch (Throwable e) {
+            System.out.println(e);          // java.lang.reflect.InvocationTargetException
+            System.out.println(e.getCause());    // java.lang.IllegalArgumentException: case1: HSF Call Failed
+            System.out.println(e.getMessage());  // null
+            System.out.println(e.getCause().getMessage());    //case1: HSF Call Failed
+            System.out.println(e.getStackTrace());            //[Ljava.lang.StackTraceElement;@6682e6a5
+            System.out.println(e.getCause().getStackTrace()); //[Ljava.lang.StackTraceElement;@ac4915e
+            e.printStackTrace();
+            logger.error("error", "cause:" + e.getCause().getMessage());
+            if (e.getCause() instanceof HSFException) {
+                logger.info("HSF called failed");
+            } else if (e.getCause() instanceof DataAccessException) {
+                logger.info("JdbcTemplate operating error");
+            } else if (e.getCause() instanceof IllegalArgumentException) {
+                logger.info(e.getMessage());
+            }
+        }
+        logger.info(this.tarjectObject.getClass().getName() + "."  + method.getName() + ": finished");
+        ((BaseTest) this.tarjectObject).getJdbcTemplate().rollback();
+        return result;
+    }
+~~~
